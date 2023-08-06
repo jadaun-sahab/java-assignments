@@ -1,0 +1,29 @@
+mysql> use sb101_b24_jdbc;
+Database changed
+mysql> create table company(
+    -> company_id varchar(4) primary key,
+    -> company_name varchar(20) unique not null,
+    -> turnover_in_crores bigint default 0,
+    -> registration_date date
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table car(
+    -> car_id varchar(4) primary key,
+    -> model_name varchar(20) unique not null,
+    -> price int not null,
+    -> total_seats int,
+    -> company_id varchar(4),
+    -> CONSTRAINT fk_id_car FOREIGN KEY (company_id) REFERENCES company(company_id)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql>  INSERT INTO company (company_id,company_name,turnover_in_crores,registration_date)values
+    -> ("CM01","Suzuki","7542","1973-01-01"),
+    -> ("CM02","Hyundai","6542","1994-01-01"),
+    -> ("CM03","Skoda","2542","2004-01-01"),
+    -> ("CM04","Volkswagen","4956","2005-01-01");
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql>
