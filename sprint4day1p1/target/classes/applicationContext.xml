@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  
+
+    <!-- Define Person objects -->
+    <bean id="person1" class="com.masai.Person">
+        <property name="id" value="1"/>
+        <property name="name" value="vikas"/>
+        <property name="age" value="25"/>
+        <property name="email" value="vikas@example.com"/>
+        <property name="mobile" value="555-1234"/>
+    </bean>
+    <bean id="person2" class="com.masai.Person">
+        <property name="id" value="2"/>
+        <property name="name" value="vivek"/>
+        <property name="age" value="30"/>
+        <property name="email" value="pablo@example.com"/>
+        <property name="mobile" value="555-5678"/>
+    </bean>
+    <bean id="person3" class="com.masai.Person">
+        <property name="id" value="3"/>
+        <property name="name" value="himu"/>
+        <property name="age" value="20"/>
+        <property name="email" value="himu@example.com"/>
+        <property name="mobile" value="555-4321"/>
+    </bean>
+    <bean id="person4" class="com.masai.Person">
+        <property name="id" value="4"/>
+        <property name="name" value="vishal"/>
+        <property name="age" value="35"/>
+        <property name="email" value="vishal@example.com"/>
+        <property name="mobile" value="555-8765"/>
+    </bean>
+    <bean id="person5" class="com.masai.Person">
+        <property name="id" value="5"/>
+        <property name="name" value="harsh"/>
+        <property name="age" value="22"/>
+        <property name="email" value="harsh@example.com"/>
+        <property name="mobile" value="555-2468"/>
+    </bean>
+    
+    <!-- Define Skill objects -->
+    <bean id="skill1" class="com.masai.Skills">
+        <property name="id" value="1"/>
+        <property name="name" value="Java"/>
+        <property name="yearsOfExperience" value="3"/>
+    </bean>
+    <bean id="skill2" class="com.masai.Skills">
+        <property name="id" value="2"/>
+        <property name="name" value="javaScript"/>
+        <property name="yearsOfExperience" value="2"/>
+    </bean>
+    <bean id="skill3" class="com.masai.Skills">
+        <property name="id" value="3"/>
+        <property name="name" value="SQL"/>
+        <property name="yearsOfExperience" value="1"/>
+    </bean>
+    
+    <!-- Inject dependencies into PersonService -->
+    <bean id="personService" class="com.masai.PersonService">
+        <property name="skillMap">
+            <map>
+                <entry key-ref="person1" value-ref="skill1"/>
+                <entry key-ref="person2" value-ref="skill2"/>
+                <entry key-ref="person3" value-ref="skill3"/>
+            </map>
+        </property>
+        <property name="personList">
+            <list>
+                <ref bean="person1"/>
+                <ref bean="person2"/>
+                <ref bean="person3"/>
+			</list>
+		</property>
+		
+		</bean>
+</beans>
